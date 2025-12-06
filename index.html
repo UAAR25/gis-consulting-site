@@ -1,9 +1,1004 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>GIS Consulting Site</title>
-  </head>
-  <body>
-    <h1>Website Coming Soon</h1>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Geospatial & Remote Sensing Consultants </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Geospatial and remote sensing consulting for agriculture, climate risk and hazards in Pakistan and the region." />
+  <style>
+    :root {
+      --bg: #0b1120;
+      --bg-alt: #020617;
+      --card-bg: #0f172a;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Layout wrappers */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* Header / Nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(15,23,42,0.96), rgba(15,23,42,0.8), transparent);
+      border-bottom: 1px solid rgba(31,41,55,0.7);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 0;
+    }
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #22d3ee, #0ea5e9, #1d4ed8);
+      font-size: 0.8rem;
+      color: white;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.2s ease;
+    }
+    .nav-links a:hover {
+      color: var(--text);
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      border-color: transparent;
+      color: #0b1120;
+      box-shadow: 0 12px 30px rgba(8,47,73,0.6);
+    }
+    .btn-primary:hover {
+      filter: brightness(1.04);
+      text-decoration: none;
+    }
+    .btn-outline {
+      background: rgba(15,23,42,0.9);
+    }
+    .btn-outline:hover {
+      background: rgba(15,23,42,1);
+      text-decoration: none;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 3.75rem 0 3rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1.1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.15rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(56,189,248,0.4);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .hero-kicker-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 15px rgba(34,197,94,0.6);
+    }
+    .hero-title {
+      font-size: clamp(2.2rem, 3.1vw, 2.8rem);
+      line-height: 1.15;
+      font-weight: 700;
+      margin-bottom: 0.9rem;
+    }
+    .hero-title span {
+      color: var(--accent);
+    }
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 34rem;
+      margin-bottom: 1.6rem;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.7rem;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.75rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .hero-meta strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    /* Hero "map" panel */
+    .hero-panel {
+      border-radius: 18px;
+      border: 1px solid rgba(148,163,184,0.45);
+      background: radial-gradient(circle at top left, rgba(8,47,73,0.6), rgba(15,23,42,0.96));
+      padding: 1rem;
+      box-shadow: 0 20px 45px rgba(15,23,42,0.9);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+    .hero-panel-dots {
+      display: flex;
+      gap: 0.25rem;
+    }
+    .hero-panel-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #1f2937;
+    }
+    .hero-panel-body {
+      border-radius: 12px;
+      border: 1px solid rgba(51,65,85,0.8);
+      background: radial-gradient(circle at top, rgba(56,189,248,0.1), rgba(15,23,42,0.95));
+      padding: 0.9rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-map {
+      height: 210px;
+      border-radius: 10px;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(56,189,248,0.25) 0, transparent 55%),
+        radial-gradient(circle at 90% 80%, rgba(59,130,246,0.18) 0, transparent 55%),
+        linear-gradient(135deg, rgba(15,23,42,1), rgba(15,23,42,0.95));
+      position: relative;
+    }
+    .hero-map-grid {
+      position: absolute;
+      inset: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(51,65,85,0.8);
+      background-image: linear-gradient(rgba(30,64,175,0.45) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(30,64,175,0.45) 1px, transparent 1px);
+      background-size: 18px 18px;
+      overflow: hidden;
+    }
+    .hero-map-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 40% 35%, rgba(34,211,238,0.55), transparent 55%),
+                  radial-gradient(circle at 65% 65%, rgba(56,189,248,0.45), transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.8;
+    }
+    .hero-map-tag {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      background: rgba(15,23,42,0.95);
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      padding: 0.18rem 0.75rem;
+      font-size: 0.72rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--muted);
+    }
+    .hero-map-tag span {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34,197,94,0.7);
+    }
+    .hero-panel-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.85rem;
+      font-size: 0.75rem;
+    }
+    .hero-stat {
+      background: rgba(15,23,42,0.95);
+      border-radius: 10px;
+      border: 1px solid rgba(30,64,175,0.8);
+      padding: 0.6rem 0.7rem;
+    }
+    .hero-stat-label {
+      color: var(--muted);
+      font-size: 0.7rem;
+    }
+    .hero-stat-value {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 0.2rem;
+    }
+
+    /* Section base */
+    section {
+      padding: 2.5rem 0;
+    }
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+    }
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 32rem;
+    }
+
+    /* "Clients" strip */
+    .clients-strip {
+      padding: 0.7rem 0 0;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .clients-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.4rem;
+    }
+    .clients-tag {
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(55,65,81,0.9);
+      background: rgba(15,23,42,0.85);
+    }
+
+    /* Services */
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+    @media (min-width: 768px) {
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    .card {
+      background: rgba(15,23,42,0.98);
+      border-radius: 14px;
+      border: 1px solid rgba(31,41,55,0.9);
+      padding: 1rem;
+      box-shadow: 0 14px 35px rgba(15,23,42,0.9);
+    }
+    .card h3 {
+      font-size: 0.98rem;
+      margin-bottom: 0.35rem;
+    }
+    .card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.25rem;
+    }
+    .chip {
+      font-size: 0.7rem;
+      padding: 0.12rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,1);
+      border: 1px solid rgba(55,65,81,0.85);
+      color: var(--muted);
+    }
+
+    /* Case studies */
+    .case-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+    }
+    .case-meta strong {
+      color: var(--text);
+    }
+    .card-footer-link {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    /* Process */
+    .process {
+      display: grid;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+    }
+    @media (min-width: 768px) {
+      .process {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+    .process-step {
+      background: rgba(15,23,42,0.98);
+      border: 1px solid rgba(31,41,55,0.9);
+      border-radius: 12px;
+      padding: 0.85rem;
+    }
+    .process-step h3 {
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(56,189,248,0.7);
+      font-size: 0.75rem;
+      margin-right: 0.3rem;
+      color: var(--accent);
+    }
+
+    /* Why me */
+    .pill-list {
+      display: grid;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+    }
+    @media (min-width: 768px) {
+      .pill-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    .pill-item {
+      background: rgba(15,23,42,0.98);
+      border-radius: 999px;
+      border: 1px solid rgba(31,41,55,0.9);
+      padding: 0.45rem 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      gap: 1.4rem;
+    }
+    @media (min-width: 768px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      }
+    }
+    form {
+      display: grid;
+      gap: 0.8rem;
+    }
+    label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.55rem 0.6rem;
+      border-radius: 10px;
+      border: 1px solid rgba(55,65,81,0.9);
+      background: rgba(15,23,42,0.98);
+      color: var(--text);
+      font-size: 0.85rem;
+    }
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: 1px solid rgba(56,189,248,0.8);
+      border-color: rgba(56,189,248,0.8);
+    }
+
+    .contact-side {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .contact-side strong {
+      color: var(--text);
+    }
+    .contact-list {
+      margin-top: 0.6rem;
+      list-style: none;
+    }
+    .contact-list li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(31,41,55,0.9);
+      padding: 1.3rem 0 1.8rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .hero {
+        padding-top: 2.5rem;
+      }
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .nav-links {
+        display: none; /* simple version: hide nav links on very small screens */
+      }
+      .nav {
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="logo">
+          <span>MH</span>
+          <div>Geo Intelligence</div>
+        </div>
+        <nav class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#cases">Projects</a>
+          <a href="#process">Process</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="nav-cta">
+          <a href="#contact" class="btn btn-outline">Email</a>
+          <a href="#contact" class="btn btn-primary">Book a consultation</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-kicker">
+            <div class="hero-kicker-dot"></div>
+            <span>Geospatial & Remote Sensing Consultant</span>
+          </div>
+          <h1 class="hero-title">
+            Satellite-driven insights for <span>crops, climate & hazards</span>.
+          </h1>
+          <p class="hero-subtitle">
+            I help governments, NGOs, and organisations turn satellite imagery and climate data into
+            decision-ready maps, dashboards, and analytics — with a special focus on agriculture
+            and climate risk in Pakistan and the wider region.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Discuss a project</a>
+            <a href="#services" class="btn btn-outline">View services</a>
+          </div>
+          <div class="hero-meta">
+            <div>
+              <strong>20+ years of data</strong>
+              Crop & climate records (2004–2024) for key provinces.
+            </div>
+            <div>
+              <strong>End-to-end delivery</strong>
+              From raw satellite data to maps, models, and reports.
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero visual "map" panel -->
+        <div class="hero-panel" aria-hidden="true">
+          <div class="hero-panel-header">
+            <div>Project overview · Pakistan</div>
+            <div class="hero-panel-dots">
+              <div class="hero-panel-dot"></div>
+              <div class="hero-panel-dot"></div>
+              <div class="hero-panel-dot"></div>
+            </div>
+          </div>
+          <div class="hero-panel-body">
+            <div class="hero-map">
+              <div class="hero-map-grid"></div>
+              <div class="hero-map-overlay"></div>
+              <div class="hero-map-tag">
+                <span></span>
+                Live crop & climate layers
+              </div>
+            </div>
+            <div class="hero-panel-stats">
+              <div class="hero-stat">
+                <div class="hero-stat-label">Agriculture focus</div>
+                <div class="hero-stat-value">Wheat · Rice · Maize</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-label">Core tools</div>
+                <div class="hero-stat-value">GEE · ArcGIS · Python</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-label">Use cases</div>
+                <div class="hero-stat-value">Food security & risk</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- "Who I work with" strip -->
+      <div class="container clients-strip">
+        <div>Working with:</div>
+        <div class="clients-tags">
+          <div class="clients-tag">Agriculture departments</div>
+          <div class="clients-tag">Food security & climate projects</div>
+          <div class="clients-tag">Disaster management authorities</div>
+          <div class="clients-tag">Universities & research teams</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-title">Services</div>
+          <p class="section-subtitle">
+            Practical, project-ready geospatial services — from crop area estimation to climate
+            impact assessment and hazard mapping. Tailored to your region, dataset and goals.
+          </p>
+        </div>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>Crop Mapping & Area Estimation</h3>
+            <p>
+              District- and province-level wheat, rice and maize area estimation using
+              Sentinel, Landsat and MODIS imagery, calibrated with official statistics where available.
+            </p>
+            <div class="chip-row">
+              <span class="chip">District & province scale</span>
+              <span class="chip">NDVI / NDWI</span>
+              <span class="chip">GeoTIFF + CSV outputs</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Climate & Yield Impact Analysis</h3>
+            <p>
+              Advanced econometric modeling (including ARDL and panel methods) to quantify how
+              temperature, rainfall and emissions affect cereal yields over time.
+            </p>
+            <div class="chip-row">
+              <span class="chip">ARDL · Panel analysis</span>
+              <span class="chip">Seasonal climate indices</span>
+              <span class="chip">Policy-ready summaries</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Glacier & Hazard Risk Mapping</h3>
+            <p>
+              Multi-sensor analysis (DEM, MODIS, Sentinel-1/2) to map snow and ice dynamics,
+              avalanche-prone slopes and potential hazard zones in high-mountain regions.
+            </p>
+            <div class="chip-row">
+              <span class="chip">NDSI · NDWI · slope</span>
+              <span class="chip">Hazard zoning</span>
+              <span class="chip">Maps & reports</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Custom Web Maps & Dashboards</h3>
+            <p>
+              Interactive Google Earth Engine apps and web dashboards to visualise crops,
+              climate indicators or hazard indices for decision makers.
+            </p>
+            <div class="chip-row">
+              <span class="chip">GEE apps</span>
+              <span class="chip">Story maps</span>
+              <span class="chip">Stakeholder-friendly</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Data Cleaning & Geospatial Analytics</h3>
+            <p>
+              Integrating satellite-based indicators with production statistics, climate variables
+              and emissions into analysis-ready datasets.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Data integration</span>
+              <span class="chip">Climate · crop · emissions</span>
+              <span class="chip">R / Python / GEE</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Training & Capacity Building</h3>
+            <p>
+              Hands-on training for teams in Google Earth Engine and geospatial workflows,
+              tailored to your projects and level of experience.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Workshops</span>
+              <span class="chip">GEE & remote sensing</span>
+              <span class="chip">Applied exercises</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case studies -->
+    <section id="cases">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-title">Selected projects & case studies</div>
+          <p class="section-subtitle">
+            A few examples of how satellite data and climate analytics have been used in real
+            projects. Full case studies can be shared on request.
+          </p>
+        </div>
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="case-meta">
+              <strong>Punjab · Wheat & climate risk</strong><br />
+              Client type: Government / research collaboration
+            </div>
+            <h3>Wheat–Climate Impact Assessment (2004–2030)</h3>
+            <p>
+              Combined crop statistics, satellite-derived climate indicators and emissions data to
+              estimate long- and short-term impacts of climate variability on district-level wheat yields.
+            </p>
+            <p class="card-footer-link">
+              <em>Deliverables:</em> Maps, climate–yield elasticities, forecast scenarios, policy notes.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="case-meta">
+              <strong>Punjab & Sindh · Rice mapping</strong><br />
+              Client type: Food security project
+            </div>
+            <h3>Rice Area Estimation via NDVI/NDWI Curves</h3>
+            <p>
+              Used Landsat and Sentinel-2 NDVI/NDWI time series with agro-climatic zoning to detect
+              rice areas, improving estimates beyond conventional reporting.
+            </p>
+            <p class="card-footer-link">
+              <em>Deliverables:</em> Classification GeoTIFFs, district-wise area tables, methodology report.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="case-meta">
+              <strong>Karakoram · Glacier hazards</strong><br />
+              Client type: Disaster risk & climate adaptation
+            </div>
+            <h3>Snow & Glacier Hazard Zonation (Baltoro–Siachen)</h3>
+            <p>
+              Integrated DEM-derived slope, snow cover change and satellite backscatter to identify
+              zones with elevated avalanche and melt-related hazard.
+            </p>
+            <p class="card-footer-link">
+              <em>Deliverables:</em> Hazard maps, change statistics and recommendations for monitoring.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-title">How we work together</div>
+          <p class="section-subtitle">
+            A simple, transparent project flow that takes you from an idea or problem to concrete maps,
+            analytics and recommendations.
+          </p>
+        </div>
+        <div class="process">
+          <div class="process-step">
+            <h3><span class="step-number">1</span> Discovery call</h3>
+            <p>
+              We discuss your objectives, study area, timelines and any existing data or reports.
+            </p>
+          </div>
+          <div class="process-step">
+            <h3><span class="step-number">2</span> Scope & proposal</h3>
+            <p>
+              You receive a clear scope, deliverables (maps, datasets, dashboards, reports), timeline and budget.
+            </p>
+          </div>
+          <div class="process-step">
+            <h3><span class="step-number">3</span> Data & analysis</h3>
+            <p>
+              Satellite processing, climate data integration, modeling and validation with available ground or official data.
+            </p>
+          </div>
+          <div class="process-step">
+            <h3><span class="step-number">4</span> Delivery & support</h3>
+            <p>
+              Final outputs are delivered along with documentation, and optional training or follow-up support.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About / Why me -->
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-title">About Muhammad Hassan</div>
+          <p class="section-subtitle">
+            GIS and remote sensing specialist focused on agriculture, climate change and glacier hazards,
+            with extensive experience across Pakistan’s provinces and high-mountain regions.
+          </p>
+        </div>
+        <div class="grid grid-2">
+          <div>
+            <p style="font-size:0.9rem; color:var(--muted); margin-bottom:0.8rem;">
+              I work at the intersection of remote sensing, climate science and applied statistics.
+              Using tools such as Google Earth Engine, ArcGIS, QGIS, Python and advanced econometric models,
+              I build workflows that turn large volumes of satellite and climate data into practical insights
+              for decision makers.
+            </p>
+            <p style="font-size:0.9rem; color:var(--muted);">
+              My work includes long-term crop–climate analyses, district-level crop area estimation,
+              and glacier hazard studies in some of the most data-sparse regions. I collaborate with
+              government agencies, research teams and projects that need reliable, technically robust
+              geospatial evidence.
+            </p>
+          </div>
+          <div class="pill-list">
+            <div class="pill-item">
+              <div class="pill-dot"></div>
+              2004–2024 crop & climate records across Punjab, Sindh, KP and other regions.
+            </div>
+            <div class="pill-item">
+              <div class="pill-dot"></div>
+              Proven workflows for wheat, rice and maize mapping using Landsat and Sentinel.
+            </div>
+            <div class="pill-item">
+              <div class="pill-dot"></div>
+              Experience with ARDL, panel models and climate indices for yield analysis.
+            </div>
+            <div class="pill-item">
+              <div class="pill-dot"></div>
+              Glacier and hazard mapping in complex high-mountain terrain.
+            </div>
+            <div class="pill-item">
+              <div class="pill-dot"></div>
+              Clear visual outputs and reports designed for non-technical audiences.
+            </div>
+            <div class="pill-item">
+              <div class="pill-dot"></div>
+              Flexible engagement: from short reviews to full multi-year projects.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-title">Start a conversation</div>
+          <p class="section-subtitle">
+            Share a few details about your project or idea and I will get back to you with questions
+            or a suggested way forward.
+          </p>
+        </div>
+        <div class="contact-grid">
+          <div class="card">
+            <!-- NOTE: to make this form work, connect it to your backend, Formspree, etc. -->
+            <form action="https://formspree.io/f/mgvgzbvp" method="POST">
+  <div>
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" placeholder="Your full name" required />
+  </div>
+
+  <div>
+    <label for="org">Organisation</label>
+    <input id="org" name="org" type="text" placeholder="Ministry, NGO, company, university, etc." />
+  </div>
+
+  <div>
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" placeholder="you@example.com" required />
+  </div>
+
+  <div>
+    <label for="type">Type of project</label>
+    <select id="type" name="type">
+      <option value="">Select an option</option>
+      <option value="crops">Crop mapping & area estimation</option>
+      <option value="climate">Climate & yield impact analysis</option>
+      <option value="hazard">Glacier / hazard mapping</option>
+      <option value="dashboard">Web maps & dashboards</option>
+      <option value="training">Training & capacity building</option>
+      <option value="other">Other / not sure yet</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="message">Project description</label>
+    <textarea id="message" name="message" placeholder="Briefly describe your region, timelines, and what you are trying to achieve." required></textarea>
+  </div>
+
+  <input type="hidden" name="_subject" value="New enquiry from GIS consulting website" />
+
+  <div>
+    <button type="submit" class="btn btn-primary" style="width:100%;">Send enquiry</button>
+  </div>
+</form>
+
+          </div>
+          <div class="contact-side">
+            <p>
+              <strong>Prefer email?</strong><br />
+              You can also contact me directly:
+            </p>
+            <ul class="contact-list">
+ 		 <li><strong>Email:</strong> aimnmine@gamil.com</li>
+ 		 <!-- <li><strong>Phone / WhatsApp:</strong> +92-326-8003000</li> -->
+			</ul>
+
+
+            <p style="margin-top:0.8rem;">
+              Typical projects include:
+            </p>
+            <ul class="contact-list">
+              <li>• Province-wide crop area estimation by season</li>
+              <li>• Climate risk assessments for major cereal crops</li>
+              <li>• Glacier and snow-hazard mapping for high-mountain valleys</li>
+              <li>• GEE-based dashboards for monitoring projects or programmes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div>© <span id="year"></span> Muhammad Hassan – Geospatial & Remote Sensing Consulting</div>
+        <div class="footer-links">
+          <span>Based in Pakistan · Available for regional and remote projects</span>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Set current year automatically
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </footer>
+</body>
 </html>
