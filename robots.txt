@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://uaar25.github.io/gis-consulting-site/sitemap.xml
